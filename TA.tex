@@ -2,7 +2,7 @@
 % 
 % Versi 1.1
 %
-% Template Proposal Tugas Akhir 
+% Template Tugas Akhir 
 % Program Studi Sistem dan Teknologi Informasi
 % Sekolah Teknik Elektro dan Informatika
 % Institut Teknologi Bandung
@@ -10,21 +10,20 @@
 % Dibuat oleh: IGB Baskara Nugraha 
 % Email: baskara@itb.ac.id 
 % 
-% Last updated: 20 Oktober 2025
 %
 % Petunjuk penggunaan:
-% 1. Ada 2 file utama, yaitu ProposalTA.tex (file ini) dan daftar-pustaka.bib (file daftar pustaka).
-% 2. Sunting ProposalTA.tex sesuai dengan kebutuhan Anda.
+% 1. Ada 2 file utama, yaitu TA.tex (file ini) dan daftar-pustaka.bib (file daftar pustaka).
+% 2. Sunting TA.tex sesuai dengan kebutuhan Anda.
 % 3. Sunting atau generate isi daftar-pustaka.bib dengan referensi yang Anda gunakan, sesuai dengan format BibLaTeX.
 % 4. Simpan kedua file tersebut dalam satu folder yang sama.
-% 5. Kompilasi file ProposalTA.tex menggunakan XeLaTeX dan Biber (lihat urutan cara kompilasi di bawah).
-% 6. Hasil kompilasi adalah file ProposalTA.pdf yang siap dicetak.
+% 5. Kompilasi file TA.tex menggunakan XeLaTeX dan Biber (lihat urutan cara kompilasi di bawah).
+% 6. Hasil kompilasi adalah file TA.pdf yang siap dicetak.
 % 
 % Urutan cara kompilasi (melalui command line):
-% 1. xelatex ProposalTA.tex
-% 2. biber ProposalTA      
-% 3. xelatex  ProposalTA.tex
-% 4. xelatex  ProposalTA.tex
+% 1. xelatex TA.tex
+% 2. biber TA      
+% 3. xelatex  TA.tex
+% 4. xelatex  TA.tex
 %
 % Catatan:
 % - Pastikan Anda telah menginstal paket-paket LaTeX yang diperlukan, termasuk
@@ -66,7 +65,7 @@
 %   https://ctan.org/pkg/biblatex-chicago
 % - Untuk referensi lebih lanjut tentang penggunaan XeLaTeX dan fontspec, silakan merujuk ke dokumentasi resmi fontspec.
 %   https://ctan.org/pkg/fontspec
-% - Selamat menyusun proposal tugas akhir Anda!
+% - Selamat menyusun dokumen tugas akhir Anda!
 %
 \documentclass[12pt,a4paper,oneside]{book}
 
@@ -114,7 +113,6 @@
     language=english,
     autolang=other
 ]{biblatex-chicago}
-
 \addbibresource{daftar-pustaka.bib}
 
 % ==========================================
@@ -202,38 +200,11 @@
 % ==========================================
 \begin{document}
 
-% ==========================================
-% HALAMAN JUDUL
-% ==========================================
-\input{Halaman Judul.tex}
-
-
-
-% ==========================================
-% LEMBAR PENGESAHAN 
-% ==========================================
-\input{Halaman Pengesahan.tex}
-
 % -- Change page number style to roman ---
-\pagenumbering{roman} 
+%\pagenumbering{roman} 
 
 
-% ==========================================
-% DAFTAR ISI, TABEL, GAMBAR
-% ==========================================
-% --- DAFTAR ISI ---
-\input{Daftar Isi.tex}
 
-% --- DAFTAR GAMBAR ---
-\input{Daftar Gambar.tex}
-
-% --- DAFTAR TABEL ---
-\input{Daftar Tabel.tex}
-
-% --- DAFTAR LISTING (ALGORITMA, PSEUDOCODE, SOURCE CODE) ---
-\input{Daftar Listing.tex}
-
-\mainmatter
 % --- FORMAT TAMPILAN JUDUL BAB, SUBBAB, JUDUL GAMBAR DAN TABEL ---
 % --- Judul Bab ---
 \titleformat{\chapter}[display]
@@ -251,6 +222,8 @@
 	{\normalfont\bfseries}
 	{\thesubsubsection}{1em}{}
 
+% --- Atur spasi sebelum dan sesudah judul bab/chapter ---  
+\titlespacing*{\chapter}{0pt}{0pt}{0pt}
 
 % --- Format judul gambar dan tabel ---
 \captionsetup[figure]{labelsep=space}
@@ -261,14 +234,36 @@
 
 % --- Atur indentasi paragraf ---
 \setlength{\parindent}{0pt}
-% -- Change page number style to arabic ---
-\pagenumbering{arabic} 
 
+
+
+\frontmatter
+% --- Atur format daftar isi untuk bagian frontmatter ---
+\addtocontents{toc}{\protect\setlength{\cftbeforechapskip}{0pt}}
+\addtocontents{toc}{\protect\renewcommand{\protect\cftchapfont}{\protect\normalfont}}
+\addtocontents{toc}{\protect\renewcommand{\protect\cftchappagefont}{\protect\normalfont}}
+\input{1 Halaman Judul.tex}
+\input{2 Lembar Pengesahan.tex}
+\input{3 Lembar Pernyataan.tex}
+\input{4 Abstrak.tex}
+\input{5 Kata Pengantar.tex}
+\input{6 Daftar Isi.tex}
+\input{8 Daftar Gambar.tex}
+\input{9 Daftar Tabel.tex}
+\input{10 Daftar Listing.tex}
+
+\mainmatter
+% --- Atur format daftar isi untuk bagian mainmatter ---
+\addtocontents{toc}{\protect\setlength{\cftbeforechapskip}{10pt}}
+\addtocontents{toc}{\protect\renewcommand{\protect\cftchapfont}{\protect\bfseries}}
+\addtocontents{toc}{\protect\renewcommand{\protect\cftchappagefont}{\protect\bfseries}}
 \input{Bab I - Pendahuluan.tex}
-\input{Bab II - Studi-Literatur.tex}
-\input{Bab III - Analisis-Masalah.tex}
-\input{Bab IV - Desain-Konsep-Solusi.tex}
-\input{Bab V - Rencana-Selanjutnya.tex}
+\input{Bab II - Studi.tex}
+\input{Bab III - Analisis.tex}
+\input{Bab IV - Perancangan.tex}
+\input{Bab V - Implementasi.tex}
+\input{Bab VI - Evaluasi.tex}
+\input{Bab VII - Penutup.tex}
 
 \backmatter
 
