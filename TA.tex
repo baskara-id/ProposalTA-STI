@@ -67,7 +67,7 @@
 %   https://ctan.org/pkg/fontspec
 % - Selamat menyusun dokumen tugas akhir Anda!
 %
-\documentclass[12pt,a4paper,oneside]{book}
+\documentclass[12pt,a4paper]{book}
 
 % ==========================================
 % BASIC PACKAGES
@@ -75,7 +75,7 @@
 \usepackage[utf8]{inputenc} % for UTF-8 encoding
 \usepackage{fontspec} % for font selection
 \setmainfont{Times New Roman} % set main font to Times New Roman
-\usepackage[a4paper, left=4cm, right=3cm, top=3cm, bottom=3cm]{geometry} % set page margins
+%\usepackage[a4paper, left=4cm, right=3cm, top=3cm, bottom=3cm]{geometry} % set page margins
 \usepackage[indonesian]{babel} % untuk bahasa Indonesia
 \usepackage{csquotes} % for context-sensitive quotation facilities
 \usepackage{setspace} % for line spacing
@@ -84,8 +84,8 @@
 \usepackage{caption} % for customizing captions
 \usepackage{subcaption} % for sub-figures
 \usepackage{hyperref} % for hyperlinks
-\usepackage{titlesec} % for customizing titles
 \usepackage{tocloft} % for customizing table of contents
+\usepackage{titlesec} % for customizing titles
 \usepackage{lipsum} % for dummy text (lorem ipsum text)
 \usepackage{floatrow} % for customizing float (figure and table) positions
 \usepackage{listings} % for code listing
@@ -98,11 +98,22 @@
 \usepackage{longtable}
 \usepackage{booktabs}
 \usepackage[bahasai]{datetime2}
-
+\usepackage{geometry}
+\usepackage{algorithm}
+\usepackage{algpseudocode}
+\usepackage{microtype} % Untuk optimasi typography dan spacing
+%\usepackage[none]{hyphenat} % Menonaktifkan hyphenation
+%\usepackage{mathptmx} %  font Times New Roman untuk teks dan matematika
 
 \setcounter{tocdepth}{4} % kedalaman daftar isi sampai subsubbab
 \setcounter{secnumdepth}{4} % kedalaman penomoran sampai subsubbab
-
+\usepackage{floatrow}
+\floatsetup[table]{
+  capposition=top,
+  objectset=centering,
+  captionskip=10pt
+}
+\usepackage{array}
 
 % ==========================================
 % SITASI DAN DAFTAR PUSTAKA (MENGGUNAKAN CHICAGO MANUAL OF STYLE)
@@ -161,21 +172,34 @@
 % -- No Header dan No Footer ---
 \pagestyle{plain}
 
-% --- Ubah nama daftar listing ke "DAFTAR KODE" ---
+% --- Ubah nama daftar listing ke "DAFTAR KODE PROGRAM" ---
 % --- Harus diletakkan sebelum \begin{document} ---
-\renewcommand{\lstlistlistingname}{\centering\normalsize DAFTAR KODE} 
-\renewcommand{\lstlistingname}{Kode}
+\renewcommand{\lstlistlistingname}{DAFTAR KODE PROGRAM} 
+\renewcommand{\lstlistingname}{Kode Program}
+\lstset{basicstyle=\ttfamily\footnotesize,breaklines=true}
+
+% --- Ubah nama list of algorithm ke "DAFTAR ALGORITMA" ---
+\renewcommand{\algorithmname}{Algoritma}
+\renewcommand{\listalgorithmname}{DAFTAR ALGORITMA}
 \lstset{basicstyle=\ttfamily\footnotesize,breaklines=true}
 %\captionsetup[lstlisting]{justification=raggedright,singlelinecheck=false}
 
 
 \renewcommand \cftchapdotsep{4.5}
+
 %\cftsetrmarg{4em}  % Ini diset agar judul subbab tidak mepet ke nomor halaman di daftar isi
 % -- Atur indentasi judul bab, subbab, dan subsubbab di daftar isi ---
 \setlength{\cftchapindent}{0em}
-\setlength{\cftsecindent}{0em}
-\setlength{\cftsubsecindent}{0em}
-\setlength{\cftsubsubsecindent}{0em}
+\setlength{\cftchapnumwidth}{1.8em}
+\setlength{\cftsecindent}{1.8em}
+\setlength{\cftsecnumwidth}{2.4em}
+\setlength{\cftsubsecindent}{4.2em}
+\setlength{\cftsubsecnumwidth}{2.8em}
+\setlength{\cftsubsubsecindent}{7.0em}
+\setlength{\cftsubsubsecnumwidth}{3.2em}
+
+
+
 
 % --- Ubah nama bulan ke Bahasa Indonesia ---
 \renewcommand*{\DTMbahasaimonthname}[1]{%
@@ -195,14 +219,19 @@
   \fi
 }
 
+% --- Atur margin halaman untuk single-sided format (satu muka) ---
+\geometry{
+      a4paper,
+      inner=4cm,
+      outer=3cm,
+      top=3cm,
+      bottom=3cm
+}
+
 % ==========================================
 % AWAL DOKUMEN
 % ==========================================
 \begin{document}
-
-% -- Change page number style to roman ---
-%\pagenumbering{roman} 
-
 
 
 % --- FORMAT TAMPILAN JUDUL BAB, SUBBAB, JUDUL GAMBAR DAN TABEL ---
@@ -222,6 +251,7 @@
 	{\normalfont\bfseries}
 	{\thesubsubsection}{1em}{}
 
+
 % --- Atur spasi sebelum dan sesudah judul bab/chapter ---  
 \titlespacing*{\chapter}{0pt}{0pt}{0pt}
 
@@ -233,44 +263,91 @@
 \floatsetup[lstlisting]{capposition=top}
 
 % --- Atur indentasi paragraf ---
-\setlength{\parindent}{0pt}
+%\setlength{\parindent}{0pt}
 
 
-
+% ==========================================
+% HALAMAN AWAL (FRONTMATTER)
+% ==========================================
 \frontmatter
 % --- Atur format daftar isi untuk bagian frontmatter ---
 \addtocontents{toc}{\protect\setlength{\cftbeforechapskip}{0pt}}
 \addtocontents{toc}{\protect\renewcommand{\protect\cftchapfont}{\protect\normalfont}}
 \addtocontents{toc}{\protect\renewcommand{\protect\cftchappagefont}{\protect\normalfont}}
+\renewcommand{\cftchapleader}{\cftdotfill{\cftchapdotsep}}
+% ==========================================
+
 \input{1 Halaman Judul.tex}
 \input{2 Lembar Pengesahan.tex}
 \input{3 Lembar Pernyataan.tex}
 \input{4 Abstrak.tex}
 \input{5 Kata Pengantar.tex}
-\input{6 Daftar Isi.tex}
-\input{8 Daftar Gambar.tex}
-\input{9 Daftar Tabel.tex}
-\input{10 Daftar Listing.tex}
+% ==========================================
+% --- Atur margin halaman untuk double-sided format (bolak-balik) ---
+% --- Comment baris di bawah ini jika ingin tetap menggunakan single-sided format ---
+% --- atau pindahkan ke bagian setelah \mainmatter jika hanya ingin halaman isi yang bolak-balik ---
 
+\newgeometry{
+      twoside,
+      a4paper,
+      inner=4cm,
+      outer=3cm,
+      top=3cm,
+      bottom=3cm
+}
+% ==========================================
+
+\cleardoublepage % memastikan bab baru dimulai di halaman ganjil (kanan)
+\input{6 Daftar Isi.tex}
+\cleardoublepage
+\input{8 Daftar Gambar.tex}
+\cleardoublepage
+\input{9 Daftar Tabel.tex}
+\cleardoublepage
+\input{10 Daftar Algoritma.tex}
+\cleardoublepage
+\input{11 Daftar Listing.tex}
+\cleardoublepage
+\input{12 Daftar Simbol dan Singkatan.tex}
+
+% ==========================================
+% BAGIAN UTAMA DOKUMEN
+% ==========================================
 \mainmatter
 % --- Atur format daftar isi untuk bagian mainmatter ---
 \addtocontents{toc}{\protect\setlength{\cftbeforechapskip}{10pt}}
 \addtocontents{toc}{\protect\renewcommand{\protect\cftchapfont}{\protect\bfseries}}
 \addtocontents{toc}{\protect\renewcommand{\protect\cftchappagefont}{\protect\bfseries}}
+\renewcommand{\cftchapleader}{\bfseries\cftdotfill{\cftchapdotsep}}
+% ==========================================
+
+\cleardoublepage % memastikan bab baru dimulai di halaman ganjil (kanan)
 \input{Bab I - Pendahuluan.tex}
+
+\cleardoublepage
 \input{Bab II - Studi.tex}
+
+\cleardoublepage
 \input{Bab III - Analisis.tex}
+
+\cleardoublepage
 \input{Bab IV - Perancangan.tex}
+
+\cleardoublepage
 \input{Bab V - Implementasi.tex}
+
+\cleardoublepage
 \input{Bab VI - Evaluasi.tex}
+
+\cleardoublepage
 \input{Bab VII - Penutup.tex}
 
-\backmatter
 
+\backmatter
 % ==========================================
 % DAFTAR PUSTAKA
 % ==========================================
-
+\cleardoublepage
 \printbibliography[title={DAFTAR PUSTAKA}]
 
 % ==========================================

@@ -1,0 +1,131 @@
+\vspace{2cm}
+\begin{center}
+{\fontsize{14}{16.8}\selectfont\textbf{DAFTAR SIMBOL DAN SINGKATAN}}\\[1em]
+\end{center}
+\label{chap:simbol-singkatan}
+\addcontentsline{toc}{chapter}{DAFTAR SIMBOL DAN SINGKATAN}
+\setcounter{chapter}{0}
+\setcounter{section}{0}
+\vspace{2em}
+
+% ============================================================
+% SECTION 1: DAFTAR SINGKATAN
+% ============================================================
+
+% \subsection{Daftar Singkatan}
+\label{sec:daftar-singkatan}
+\vspace{0.8em}
+
+\begin{longtable}{@{} l >{\raggedright\arraybackslash}p{7.5cm} c @{}}
+\multicolumn{1}{l}{\textbf{Singkatan}} & \multicolumn{1}{l}{\textbf{Deskripsi}} & \multicolumn{1}{l}{\parbox[c]{3.5cm}{\raggedright \textbf{Pemakaian pertama kali}}} \\
+
+% ============================================================
+% DATA SINGKATAN (ALFABETIS A-Z)
+% ============================================================
+
+AI & \textit{Artificial Intelligence} & 1 \\
+CNN & \textit{Convolutional Neural Network} & 2 \\
+GPU & \textit{Graphics Processing Unit} & 14 \\
+
+
+\end{longtable}
+
+\newpage
+
+% ============================================================
+% SECTION 2: DAFTAR SIMBOL
+% ============================================================
+
+\label{sec:daftar-simbol}
+\vspace{0.8em}
+
+\begin{longtable}{@{} l >{\raggedright\arraybackslash}p{6.5cm} c @{}}
+\multicolumn{1}{l}{\textbf{Simbol}} & \multicolumn{1}{l}{\textbf{Deskripsi}} & \multicolumn{1}{l}{\parbox[c]{3.5cm}{\raggedright \textbf{Pemakaian pertama kali}}} \\
+
+
+
+% \multicolumn{2}{l}{\textbf{Huruf Yunani (Parameter Model)}} \\
+
+$\alpha$ & Koefisien bobot untuk \textit{loss function}, tingkat signifikansi statistik & 75 \\
+$\beta$ & Koefisien bobot untuk \textit{Binary Cross-Entropy loss} & 75 \\
+$\lambda$ & Koefisien bobot untuk CTC \textit{loss}, parameter regularisasi & 75 \\
+$\theta$ & Parameter model \textit{neural network} & 75 \\
+$\sigma$ & Deviasi standar & 75 \\
+$\mu$ & Rata-rata (\textit{mean}) & 75 \\
+$\epsilon$ & \textit{Token blank}/kosong dalam CTC, konstanta kecil untuk stabilitas numerik & 75 \\
+$\Delta$ & Delta (selisih/perubahan nilai) & 75 \\
+$\pi$ & \textit{Alignment path} dalam CTC & 75 \\
+$\pi_t$ & \textit{Token} pada \textit{timestep} $t$ dalam \textit{alignment path} & 76 \\[1ex]
+
+% \multicolumn{2}{l}{\textbf{Operator Matematis}} \\
+
+$\nabla$ atau $\partial$ & Operator gradien atau turunan parsial & 75 \\
+$\sum$ & Operator penjumlahan & 75 \\
+$\prod$ & Operator perkalian & 75 \\
+$\int$ & Operator integral & 75 \\
+argmax & Argumen yang memaksimalkan fungsi & 76 \\
+$\sim$ & Terdistribusi menurut & 75 \\
+$\to$ & Menuju atau konvergen ke & 75 \\[1ex]
+
+% \multicolumn{2}{l}{\textbf{Fungsi \textit{Loss} dan Kerugian}} \\
+
+$\mathcal{L}$ & Fungsi \textit{loss} (kerugian) & 75 \\
+$\mathcal{L}_{total}$ & Total \textit{loss function} & 75 \\
+$\mathcal{L}_{adversarial}$ atau $\mathcal{L}_{adv}$ & \textit{Adversarial loss} & 75 \\
+$\mathcal{L}_{reconstruction}$ & \textit{Reconstruction loss} & 75 \\
+$\mathcal{L}_{L1}$ & L1 \textit{loss} (\textit{Mean Absolute Error}) & 75 \\
+$\mathcal{L}_{L2}$ & L2 \textit{loss} (\textit{Mean Squared Error}) & 75 \\
+$\mathcal{L}_{CTC}$ & CTC (\textit{Connectionist Temporal Classification}) \textit{loss} & 75 \\
+$\mathcal{L}_{perceptual}$ & \textit{Perceptual loss} & 75 \\
+$\mathcal{L}_{pixel}$ & \textit{Pixel-wise loss} & 75 \\
+$\mathcal{L}_{BCE}$ & \textit{Binary Cross-Entropy loss} & 75 \\
+$\mathcal{L}_{GAN}$ & GAN \textit{loss} & 75 \\
+$\mathcal{L}_{cycle}$ & \textit{Cycle consistency loss} & 75 \\[1ex]
+
+% \multicolumn{2}{l}{\textbf{Variabel Model dan Komponen GAN}} \\
+
+$G$ & \textit{Generator} dalam GAN & 75 \\
+$D$ & \textit{Discriminator} dalam GAN & 75 \\
+$G(z)$ & \textit{Output} dari \textit{generator} dengan \textit{input} $z$ & 75 \\
+$D(x)$ & \textit{Output} dari \textit{discriminator} dengan \textit{input} $x$ & 75 \\
+$G_{A \to B}$ & \textit{Generator} dari domain $A$ ke $B$ & 75 \\
+$G_{B \to A}$ & \textit{Generator} dari domain $B$ ke $A$ & 75 \\
+$V(D, G)$ & Fungsi nilai (\textit{value function}) dalam GAN & 75 \\
+$x$ & Sampel data asli, \textit{input} citra & 75 \\
+$y$ & Label atau \textit{ground truth}, kondisi dalam \textit{conditional GAN} & 75 \\
+$z$ & \textit{Noise vector} atau representasi laten \\[1ex]
+
+% \multicolumn{2}{l}{\textbf{Distribusi Probabilitas}} \\
+
+$\mathbb{E}$ & Ekspektasi atau nilai harapan & 75 \\
+$p_{data}$ & Distribusi data asli & 75 \\
+$p_z$ & Distribusi \textit{prior} (\textit{noise}) & 75 \\
+$p(y|x)$ & Probabilitas bersyarat \textit{output} $y$ \textit{given input} $x$ & 75 \\
+$p_t(\pi_t|x)$ & Probabilitas \textit{token} pada \textit{timestep} $t$ \\[1ex]
+
+% \multicolumn{2}{l}{\textbf{Fungsi dan Transformasi CTC}} \\
+
+$\mathcal{B}$ & Fungsi penciutan (\textit{collapse function}) dalam CTC & 75 \\
+$\mathcal{B}^{-1}$ & Fungsi invers penciutan dalam CTC & 75 \\
+$T$ & Jumlah \textit{timestep} atau panjang \textit{sequence} \\[1ex]
+
+% \multicolumn{2}{l}{\textbf{Metrik Jarak dan Norma}} \\
+
+$|x - G(y)|_1$ & L1 \textit{distance} antara \textit{ground truth} dan \textit{generated image} & 75 \\
+$|x - G(y)|_2$ & L2 \textit{distance} antara \textit{ground truth} dan \textit{generated image} & 75 \\
+$N \times N$ & Ukuran \textit{patch} dalam PatchGAN \\[1ex]
+
+% \multicolumn{2}{l}{\textbf{Statistik dan Analisis}} \\
+
+$d$ & Cohen's $d$ (\textit{effect size}) & 75 \\
+$n$ & Jumlah sampel & 75 \\
+$p$ & \textit{p-value} (nilai probabilitas statistik) & 75 \\
+$r$ & Koefisien korelasi & 75 \\
+$R^2$ & Koefisien determinasi \\[1ex]
+
+% \multicolumn{2}{l}{\textbf{Notasi Kompleksitas Komputasi}} \\
+
+$O(n)$ & Notasi Big-O untuk kompleksitas linear & 75 \\
+$O(n^2)$ & Notasi Big-O untuk kompleksitas kuadratik & 75 \\
+
+\end{longtable}
