@@ -81,7 +81,7 @@
 \usepackage{setspace} % for line spacing
 \onehalfspacing % spasi 1.5
 \usepackage{graphicx} % for images
-\usepackage{caption} % for customizing captions
+\usepackage[singlelinecheck=false]{caption} % for customizing captions
 \usepackage{subcaption} % for sub-figures
 \usepackage{hyperref} % for hyperlinks
 \usepackage{tocloft} % for customizing table of contents
@@ -108,12 +108,14 @@
 \setcounter{tocdepth}{4} % kedalaman daftar isi sampai subsubbab
 \setcounter{secnumdepth}{4} % kedalaman penomoran sampai subsubbab
 \usepackage{floatrow}
-\floatsetup[table]{
-  capposition=top,
-  objectset=centering,
-  captionskip=10pt
-}
+%\floatsetup[table]{
+%  capposition=top,
+%  objectset=centering,
+%  captionskip=10pt
+%}
 \usepackage{array}
+\usepackage{threeparttable}
+\usepackage{tabularx}
 
 % ==========================================
 % SITASI DAN DAFTAR PUSTAKA (MENGGUNAKAN CHICAGO MANUAL OF STYLE)
@@ -228,6 +230,8 @@
       bottom=3cm
 }
 
+
+
 % ==========================================
 % AWAL DOKUMEN
 % ==========================================
@@ -239,7 +243,10 @@
 \titleformat{\chapter}[display]
       {\centering\normalfont\large\bfseries} % Commands for the entire chapter title
       {\MakeUppercase \chaptertitlename\ \thechapter}{0pt}{\large} % Chapter number format
-\renewcommand\thechapter{\Roman{chapter}}
+      \renewcommand\thechapter{\Roman{chapter}}
+% --- Atur spasi sebelum dan sesudah judul bab/chapter ---  
+\titlespacing*{\chapter}{0pt}{0pt}{0pt}
+
 % --- Judul Subbab dan Subsubbab ---
 \titleformat{\section}
 	{\normalfont\bfseries}
@@ -251,16 +258,18 @@
 	{\normalfont\bfseries}
 	{\thesubsubsection}{1em}{}
 
-
-% --- Atur spasi sebelum dan sesudah judul bab/chapter ---  
-\titlespacing*{\chapter}{0pt}{0pt}{0pt}
-
-% --- Format judul gambar dan tabel ---
-\captionsetup[figure]{labelsep=space}
-\captionsetup[table]{labelsep=space}
-\floatsetup[table]{capposition=top}
-\captionsetup[lstlisting]{labelsep=space}
+% --- Gambar ---
+\captionsetup[figure]{labelsep=space, format=hang, justification=centering} % gambar di tengah
+\floatsetup[figure]{capposition=bottom} % posisi caption di bawah gambar
+% --- Tabel ---
+\captionsetup[table]{labelsep=space, format=hang, justification=raggedright} % tabel rata kiri
+\floatsetup[table]{capposition=top} % posisi caption di atas tabel
+% --- Kode Program ---
+\captionsetup[lstlisting]{labelsep=space, format=hang, justification=raggedright}
 \floatsetup[lstlisting]{capposition=top}
+% --- Algoritma ---
+%\captionsetup[algorithm]{labelsep=space, format=hang, justification=raggedright}
+%\floatsetup[algorithm]{capposition=top}
 
 % --- Atur indentasi paragraf ---
 %\setlength{\parindent}{0pt}
@@ -308,7 +317,9 @@
 \cleardoublepage
 \input{11 Daftar Listing.tex}
 \cleardoublepage
-\input{12 Daftar Simbol dan Singkatan.tex}
+\input{12 Daftar Singkatan.tex}
+\cleardoublepage
+\input{13 Daftar Notasi.tex}
 
 % ==========================================
 % BAGIAN UTAMA DOKUMEN

@@ -13,7 +13,7 @@ Contoh gambar dapat dilihat pada Gambar \ref{gambar:jaringan}. Gambar dan juduln
 	\centering
   \captionsetup{justification=centering}
     	\includegraphics[width=0.7\textwidth]{image/gambar1.png}
-	\caption{Contoh gambar jaringan}
+	{\caption{Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book} \par}
 	\label{gambar:jaringan}
 \end{figure}
 
@@ -35,25 +35,39 @@ Untuk mendapatkan gambar yang tidak kabur (\textit{blur}), langkah-langkah berik
 \subsection{Tabel}
 Tabel ada dua jenis, yaitu tabel yang bisa termuat dalam satu halaman dan tabel yang sangat panjang sehingga tidak muat dalam satu halaman.
 \subsubsection{Tabel yang Muat dalam Satu Halaman}
-Contoh tabel dapat dilihat pada Tabel \ref{tbl:harga1} dan \ref{tbl:harga2}. Tabel dan judulnya dibuat rata kiri dan judul tabel diletakkan di atas tabel. Usahakan tabel dapat ditulis dalam satu halaman, tidak terpotong ke halaman berikutnya.
+Contoh tabel dapat dilihat pada Tabel \ref{tab:tabel1} dan \ref{tab:tabel2}. Tabel dan judulnya dibuat rata kiri dan judul tabel diletakkan di atas tabel. Usahakan tabel dapat ditulis dalam satu halaman, tidak terpotong ke halaman berikutnya.
 
-\begin{table}[t] % pilihan opsi yang disarankan: t = top, b = bottom, h = here
-  \begin{tabular}{ | p{2cm} | p{2cm} | p{3cm} |}
-	\hline
-	Nama 	& Satuan 		& Harga \\
-	\hline
-	Buku 	& Exemplar	& 25000 \\
-	Komputer	& Unit		& 2500000 \\
-	Pensil	& Buah		& 118900 \\
-	\hline
-	\end{tabular}
-\caption{Tabel harga bahan pokok}
-\label{tbl:harga1}
+
+\begin{table} 
+  \centering
+    \begin{threeparttable}[t] % threeparttable agar bisa menambahkan catatan kaki pada tabel
+    \caption{Contoh tabel yang menggunakan \texttt{tabularx} untuk mengatur lebar kolom secara fleksibel. 
+    Selain itu, tabel ini juga menggunakan \texttt{threeparttable} untuk menambahkan catatan kaki pada tabel 
+    dan opsi \texttt{X} agar lebar kolom fleksibel menyesuaikan lebar tabel.}
+    \label{tab:tabel1}
+    \begin{tabularx}{0.6\textwidth}{| c | X| l | r @{}|} % @{} removes extra space at edges, X makes the column flexible width
+	    \hline
+	    No & Nama 	& Satuan 		& Harga \\
+	    \hline
+	    1 & Buku 	& Exemplar	& 25000 \\
+	    2 & Komputer	& Unit		& 2500000 \\
+	    3 & Pensil	& Buah		& 118900 \\
+	    \hline
+	  \end{tabularx} 
+    \begin{tablenotes}
+      \footnotesize
+      \item \footnotemark[1]Tabel harga berdasarkan data tahun 2023.
+      \item \footnotemark[2]Sumber: \url{https://www.example.com}
+    \end{tablenotes}
+  \end{threeparttable}
 \end{table}
 
 
 
+
 \begin{table}[t] % pilihan opsi yang disarankan: t = top, b = bottom, h = here
+  \caption{Tabel yang menggunakan format standar \texttt{| l | c | r |}}
+  \label{tab:tabel2}
 	\begin{tabular}{ | l | c | r | }
 	\hline
 	Nama 	& Satuan 		& Harga \\
@@ -63,14 +77,28 @@ Contoh tabel dapat dilihat pada Tabel \ref{tbl:harga1} dan \ref{tbl:harga2}. Tab
 	Pensil	& Buah		& 118900 \\
 	\hline
 	\end{tabular}
-\caption{Tabel harga bahan sekunder}
-\label{tbl:harga2}
+\end{table}
+
+
+\begin{table}[t] % pilihan opsi yang disarankan: t = top, b = bottom, h = here
+  \centering
+  \caption{Tabel yang lebar kolomnya dibuat tetap (\textit{fixed width}) menggunakan \texttt{p\{width\}}. \textit{Header} tabel juga dibuat tebal menggunakan perintah \texttt{textbf\{\}}.}
+  \label{tbl:tabel3}
+	\begin{tabular}{  p{0.2\textwidth} | p{0.2\textwidth} | p{0.2\textwidth}  }
+	\hline
+	\textbf{Nama} 	& \textbf{Satuan} 		& \textbf{Harga} \\
+	\hline
+	Buku 	& Exemplar	& 25000 \\
+	\emph{Komputer}	& Unit		& 2500000 \\
+	Pensil	& Buah		& 118900 \\
+	\hline
+	\end{tabular}
 \end{table}
 
 % -- Example of importing table from external file --
 \subsubsection{Mengimpor Tabel dari Berkas Eksternal}
 
-Tabel \ref{tbl:harga3} diimpor dari berkas eksternal \textit{table/tabel1.tex} menggunakan perintah \textit{input}. 
+Tabel \ref{tab:tabel4} diimpor dari berkas eksternal \texttt{table/tabel1.tex} menggunakan perintah \texttt{input}. 
 Dengan demikian, jika tabel tersebut perlu diubah, cukup mengubah pada berkas eksternal tersebut tanpa perlu mengubah pada berkas utama ini.
 
 \input table/tabel1.tex
@@ -80,10 +108,10 @@ Dengan demikian, jika tabel tersebut perlu diubah, cukup mengubah pada berkas ek
 \subsubsection{Tabel yang Sangat Panjang}
 Jika tabel terlalu panjang sehingga tidak muat dalam satu halaman, gunakan paket 
 \textit{longtable} untuk membuat tabel yang dapat terpotong ke halaman berikutnya, 
-seperti pada Tabel \ref{tbl:longtable1}.
+seperti pada Tabel \ref{tab:longtable1}.
 
 \begin{longtable}{@{\extracolsep{\fill}} l c r r}
-\caption{Comprehensive Data Table Example}\label{tbl:longtable1} \\
+\caption{Comprehensive Data Table Example}\label{tab:longtable1} \\
 \midrule
 \textbf{ID} & \textbf{Name} & \textbf{Score} & \textbf{Rank} \\
 \midrule
