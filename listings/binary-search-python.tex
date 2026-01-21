@@ -1,0 +1,36 @@
+% -- Example of pseudocode and source code listing --
+% -- Gunakan minipage agar listing tidak terpotong ke halaman berikutnya --
+
+
+
+\begin{minipage}{\textwidth}
+\begin{lstlisting}[caption={Iterative binary search in Python}, label={lst:binary_iter}, frame=single, captionpos=t, language=Python]
+def binary_search(arr, target):
+    """
+    Performs binary search on a sorted array.
+    
+    Args:
+        arr: A sorted list of elements
+        target: The element to search for
+    
+    Returns:
+        Index of target if found, -1 otherwise
+    """
+    left = 0
+    right = len(arr) - 1
+    
+    while left <= right:
+        mid = (left + right) // 2
+        
+        if arr[mid] == target:
+            return mid
+        elif arr[mid] < target:
+            left = mid + 1
+        else:
+            right = mid - 1
+    
+    return -1
+
+
+\end{lstlisting}
+\end{minipage}

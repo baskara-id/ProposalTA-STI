@@ -1,16 +1,16 @@
 [0] Config.pm:328> INFO - This is Biber 2.21
 [0] Config.pm:331> INFO - Logfile is 'TA.blg'
-[29] biber-darwin:342> INFO - === Tue Jan 20, 2026, 19:25:52
-[37] Biber.pm:421> INFO - Reading 'TA.bcf'
+[28] biber-darwin:342> INFO - === Wed Jan 21, 2026, 19:00:08
+[36] Biber.pm:421> INFO - Reading 'TA.bcf'
 [100] Biber.pm:1002> INFO - Found 3 citekeys in bib section 0
-[105] Biber.pm:4487> INFO - Processing section 0
-[109] Biber.pm:4678> INFO - Looking for bibtex file 'daftar-pustaka.bib' for section 0
-[110] bibtex.pm:1713> INFO - LaTeX decoding ...
-[115] bibtex.pm:1519> INFO - Found BibTeX data source 'daftar-pustaka.bib'
-[133] UCollate.pm:68> INFO - Overriding locale 'indonesian' defaults 'variable = shifted' with 'variable = non-ignorable'
-[133] UCollate.pm:68> INFO - Overriding locale 'indonesian' defaults 'level = 4' with 'level = 2'
-[133] UCollate.pm:68> INFO - Overriding locale 'indonesian' defaults 'normalization = NFD' with 'normalization = prenormalized'
-[133] Biber.pm:4307> INFO - Sorting list 'cms/global//global/global/global' of type 'entry' with template 'cms' and locale 'indonesian'
-[133] Biber.pm:4313> INFO - No sort tailoring available for locale 'indonesian'
-[136] bbl.pm:676> INFO - Writing 'TA.bbl' with encoding 'UTF-8'
-[136] bbl.pm:779> INFO - Output to TA.bbl
+[107] Biber.pm:4487> INFO - Processing section 0
+[111] Biber.pm:4678> INFO - Looking for bibtex file 'daftar-pustaka.bib' for section 0
+[111] bibtex.pm:1713> INFO - LaTeX decoding ...
+[117] bibtex.pm:1519> INFO - Found BibTeX data source 'daftar-pustaka.bib'
+[136] UCollate.pm:68> INFO - Overriding locale 'indonesian' defaults 'level = 4' with 'level = 2'
+[136] UCollate.pm:68> INFO - Overriding locale 'indonesian' defaults 'variable = shifted' with 'variable = non-ignorable'
+[136] UCollate.pm:68> INFO - Overriding locale 'indonesian' defaults 'normalization = NFD' with 'normalization = prenormalized'
+[136] Biber.pm:4307> INFO - Sorting list 'cms/global//global/global/global' of type 'entry' with template 'cms' and locale 'indonesian'
+[136] Biber.pm:4313> INFO - No sort tailoring available for locale 'indonesian'
+[139] bbl.pm:676> INFO - Writing 'TA.bbl' with encoding 'UTF-8'
+[140] bbl.pm:779> INFO - Output to TA.bbl

@@ -1,0 +1,26 @@
+
+
+\begin{algorithm}[t]
+\caption{Binary Search}
+\label{alg:binary-search}
+\begin{algorithmic}[1] % [1] = line numbers
+\Require Sorted array $A[1..n]$, target value $x$
+\Ensure Index of $x$ in $A$ or $-1$ if not found
+
+\State $low \gets 1$
+\State $high \gets n$
+
+\While{$low \le high$}
+    \State $mid \gets \lfloor (low + high)/2 \rfloor$
+    \If{$A[mid] = x$}
+        \State \Return $mid$
+    \ElsIf{$A[mid] < x$}
+        \State $low \gets mid + 1$
+    \Else
+        \State $high \gets mid - 1$
+    \EndIf
+\EndWhile
+
+\State \Return $-1$
+\end{algorithmic}
+\end{algorithm}

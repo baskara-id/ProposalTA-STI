@@ -69,19 +69,14 @@
 %
 \documentclass[12pt,a4paper]{book}
 
-% ==========================================
-% BASIC PACKAGES
-% ==========================================
+% --- Main packages ---
 \usepackage[utf8]{inputenc} % for UTF-8 encoding
 \usepackage{fontspec} % for font selection
-\setmainfont{Times New Roman} % set main font to Times New Roman
-%\usepackage[a4paper, left=4cm, right=3cm, top=3cm, bottom=3cm]{geometry} % set page margins
 \usepackage[indonesian]{babel} % untuk bahasa Indonesia
 \usepackage{csquotes} % for context-sensitive quotation facilities
 \usepackage{setspace} % for line spacing
-\onehalfspacing % spasi 1.5
 \usepackage{graphicx} % for images
-\usepackage[singlelinecheck=false]{caption} % for customizing captions
+\usepackage{caption} % for customizing captions
 \usepackage{subcaption} % for sub-figures
 \usepackage{hyperref} % for hyperlinks
 \usepackage{tocloft} % for customizing table of contents
@@ -92,34 +87,27 @@
 \usepackage{amsmath} % for math
 \usepackage{amssymb} % for math symbols
 \usepackage[shortlabels]{enumitem} % for customizing lists
-\setlist[enumerate]{nosep, topsep=-10pt} % mengurangi spasi antar item dan atas bawah daftar
-\setlist[itemize]{nosep, topsep=-10pt} % mengurangi spasi antar item dan atas bawah daftar
-\usepackage[skip=12pt]{parskip}
-\usepackage{longtable}
-\usepackage{booktabs}
-\usepackage[bahasai]{datetime2}
-\usepackage{geometry}
-\usepackage{algorithm}
-\usepackage{algpseudocode}
+\usepackage[skip=12pt]{parskip} % for spacing between paragraphs
+\usepackage{longtable} % for long tables
+\usepackage{booktabs} % for better table rules
+\usepackage[bahasai]{datetime2} % for date formatting in Indonesian
+\usepackage{geometry} % for page margins
+\usepackage{algorithm} % for algorithms
+\usepackage{algorithmicx} % for algorithmic environment
+\usepackage{algpseudocode} % for pseudocode
 \usepackage{microtype} % Untuk optimasi typography dan spacing
-%\usepackage[none]{hyphenat} % Menonaktifkan hyphenation
-%\usepackage{mathptmx} %  font Times New Roman untuk teks dan matematika
+\usepackage{floatrow} % for customizing float (figure and table) positions
+\usepackage{array} % for better arrays (eg. in tabular environment)
+\usepackage{threeparttable} % for tables with notes
+\usepackage{tabularx} % for tables with adjustable-width columns
+\usepackage{xcolor} % for color definitions
+\usepackage[title,titletoc]{appendix} % for appendix management
+\usepackage{csquotes} % for context-sensitive quotation facilities
 
-\setcounter{tocdepth}{4} % kedalaman daftar isi sampai subsubbab
-\setcounter{secnumdepth}{4} % kedalaman penomoran sampai subsubbab
-\usepackage{floatrow}
-%\floatsetup[table]{
-%  capposition=top,
-%  objectset=centering,
-%  captionskip=10pt
-%}
-\usepackage{array}
-\usepackage{threeparttable}
-\usepackage{tabularx}
+\setmainfont{Times New Roman} % set main font to Times New Roman
+\onehalfspacing % spasi 1.5
 
-% ==========================================
-% SITASI DAN DAFTAR PUSTAKA (MENGGUNAKAN CHICAGO MANUAL OF STYLE)
-% ==========================================
+% --- Bibliography menggunakan BibLaTeX dengan gaya Chicago ---
 \usepackage[
     backend=biber,
     authordate,
@@ -128,9 +116,7 @@
 ]{biblatex-chicago}
 \addbibresource{daftar-pustaka.bib}
 
-% ==========================================
-% Ubah istilah bahasa Inggris di daftar pustaka ke Bahasa Indonesia
-% ==========================================
+% --- Terjemahan istilah daftar pustaka ke Bahasa Indonesia ---
 \DefineBibliographyStrings{english}{
   and          = {dan},
   andothers    = {dkk.},
@@ -149,21 +135,14 @@
   url          = {tautan},
 }
 
-% ==========================================
-% Pastikan \cite() menampilkan (Penulis Tahun)
-% ==========================================
+% --- ubah format sitasi menjadi (Author Year) ---
 \let\oldcite\cite
 \renewcommand{\cite}{\parencite}
 
-% ==========================================
-% Atur pemisah nama penulis agar lebih natural dalam Bahasa Indonesia
-% ==========================================
-\renewcommand*{\finalandcomma}{} % hilangkan koma sebelum 'dan'
+% --- hilangkan koma sebelum 'dan' pada daftar pustaka ---
+\renewcommand*{\finalandcomma}{} 
 
-
-% ==========================================
-% TAMPILAN
-% ==========================================
+% --- hyperlinks setup ---
 \hypersetup{
     colorlinks=true,
     linkcolor=black,
@@ -174,22 +153,20 @@
 % -- No Header dan No Footer ---
 \pagestyle{plain}
 
-% --- Ubah nama daftar listing ke "DAFTAR KODE PROGRAM" ---
-% --- Harus diletakkan sebelum \begin{document} ---
-\renewcommand{\lstlistlistingname}{DAFTAR KODE PROGRAM} 
-\renewcommand{\lstlistingname}{Kode Program}
+% --- Ubah nama list of listing ke "DAFTAR LISTING" ---
+\renewcommand{\lstlistlistingname}{DAFTAR \textit{LISTING}} 
+\renewcommand{\lstlistingname}{\textit{Listing}}
 \lstset{basicstyle=\ttfamily\footnotesize,breaklines=true}
 
 % --- Ubah nama list of algorithm ke "DAFTAR ALGORITMA" ---
 \renewcommand{\algorithmname}{Algoritma}
 \renewcommand{\listalgorithmname}{DAFTAR ALGORITMA}
 \lstset{basicstyle=\ttfamily\footnotesize,breaklines=true}
-%\captionsetup[lstlisting]{justification=raggedright,singlelinecheck=false}
+\renewcommand{\thealgorithm}{\thechapter.\arabic{algorithm}}
 
+\renewcommand \cftchapdotsep{4.5} % Atur jarak titik-titik pada daftar isi
 
-\renewcommand \cftchapdotsep{4.5}
-
-%\cftsetrmarg{4em}  % Ini diset agar judul subbab tidak mepet ke nomor halaman di daftar isi
+%\cftsetrmarg{4em}  % agar judul subbab tidak mepet ke nomor halaman di daftar isi (optional)
 % -- Atur indentasi judul bab, subbab, dan subsubbab di daftar isi ---
 \setlength{\cftchapindent}{0em}
 \setlength{\cftchapnumwidth}{1.8em}
@@ -199,9 +176,6 @@
 \setlength{\cftsubsecnumwidth}{2.8em}
 \setlength{\cftsubsubsecindent}{7.0em}
 \setlength{\cftsubsubsecnumwidth}{3.2em}
-
-
-
 
 % --- Ubah nama bulan ke Bahasa Indonesia ---
 \renewcommand*{\DTMbahasaimonthname}[1]{%
@@ -230,22 +204,50 @@
       bottom=3cm
 }
 
+% --- LISTINGS STYLE FOR PYTHON CODE ---
+% --- Silakan diubah sesuai selera dan kebutuhan ---
+% Define colors for syntax highlighting
+\definecolor{codegreen}{rgb}{0,0.6,0}
+\definecolor{codegray}{rgb}{0.5,0.5,0.5}
+\definecolor{codepurple}{rgb}{0.58,0,0.82}
+\definecolor{backcolour}{rgb}{0.95,0.95,0.92}
 
-
-% ==========================================
-% AWAL DOKUMEN
-% ==========================================
-\begin{document}
-
+% Configure listings style
+\lstdefinestyle{pythonstyle}{
+    backgroundcolor=\color{backcolour},   
+    commentstyle=\color{codegreen},
+    keywordstyle=\color{magenta},
+    numberstyle=\tiny\color{codegray},
+    stringstyle=\color{codepurple},
+    basicstyle=\ttfamily\footnotesize,
+    breakatwhitespace=false,         
+    breaklines=true,                 
+    captionpos=b,                    
+    keepspaces=true,                 
+    numbers=left,                    
+    numbersep=5pt,                  
+    showspaces=false,                
+    showstringspaces=false,
+    showtabs=false,                  
+    tabsize=4,
+    language=Python
+}
+\lstset{style=pythonstyle}
+% --- END OF LISTINGS STYLE FOR PYTHON CODE ---
 
 % --- FORMAT TAMPILAN JUDUL BAB, SUBBAB, JUDUL GAMBAR DAN TABEL ---
+\setcounter{tocdepth}{4} % kedalaman daftar isi sampai subsubbab
+\setcounter{secnumdepth}{4} % kedalaman penomoran sampai subsubbab
 % --- Judul Bab ---
 \titleformat{\chapter}[display]
       {\centering\normalfont\large\bfseries} % Commands for the entire chapter title
       {\MakeUppercase \chaptertitlename\ \thechapter}{0pt}{\large} % Chapter number format
       \renewcommand\thechapter{\Roman{chapter}}
 % --- Atur spasi sebelum dan sesudah judul bab/chapter ---  
-\titlespacing*{\chapter}{0pt}{0pt}{0pt}
+\titlespacing{\chapter}{0pt}{0pt}{5pt}
+\titlespacing{\section}{0pt}{6pt}{6pt}
+\titlespacing{\subsection}{0pt}{6pt}{6pt}
+\titlespacing{\subsubsection}{0pt}{6pt}{6pt}
 
 % --- Judul Subbab dan Subsubbab ---
 \titleformat{\section}
@@ -259,21 +261,55 @@
 	{\thesubsubsection}{1em}{}
 
 % --- Gambar ---
-\captionsetup[figure]{labelsep=space, format=hang, justification=centering} % gambar di tengah
-\floatsetup[figure]{capposition=bottom} % posisi caption di bawah gambar
+\captionsetup[figure]{
+  labelsep=space, 
+  format=hang
+}  
+\floatsetup[figure]{
+  capposition=bottom
+} 
 % --- Tabel ---
-\captionsetup[table]{labelsep=space, format=hang, justification=raggedright} % tabel rata kiri
-\floatsetup[table]{capposition=top} % posisi caption di atas tabel
-% --- Kode Program ---
-\captionsetup[lstlisting]{labelsep=space, format=hang, justification=raggedright}
-\floatsetup[lstlisting]{capposition=top}
+\captionsetup[table]{
+  labelsep=space, 
+  format=hang
+} 
+\floatsetup[table]{
+  capposition=top, 
+  objectset=centering, 
+  captionskip=6pt
+} 
+% --- Listing ---
+\captionsetup[lstlisting]{
+  labelsep=space, 
+  format=hang, 
+  justification=raggedright, 
+  singlelinecheck=false
+}
+\floatsetup[lstlisting]{
+  capposition=top
+}
 % --- Algoritma ---
-%\captionsetup[algorithm]{labelsep=space, format=hang, justification=raggedright}
-%\floatsetup[algorithm]{capposition=top}
+\captionsetup[algorithm]{
+  labelsep=space, 
+  format=hang, 
+  justification=raggedright, 
+  singlelinecheck=false
+}
+\floatsetup[algorithm]{
+  capposition=top
+}
 
 % --- Atur indentasi paragraf ---
-%\setlength{\parindent}{0pt}
+\setlength{\parindent}{0pt}
+\setlength{\parskip}{12pt plus 2pt minus 1pt}
 
+\setlist[enumerate]{nosep, topsep=-10pt} % mengurangi spasi antar item dan atas bawah daftar
+\setlist[itemize]{nosep, topsep=-10pt} % mengurangi spasi antar item dan atas bawah daftar
+
+% ==========================================
+% AWAL DOKUMEN
+% ==========================================
+\begin{document}
 
 % ==========================================
 % HALAMAN AWAL (FRONTMATTER)
@@ -294,7 +330,7 @@
 % ==========================================
 % --- Atur margin halaman untuk double-sided format (bolak-balik) ---
 % --- Comment baris di bawah ini jika ingin tetap menggunakan single-sided format ---
-% --- atau pindahkan ke bagian setelah \mainmatter jika hanya ingin halaman isi yang bolak-balik ---
+% --- atau pindahkan ke bagian setelah \mainmatter jika hanya ingin halaman utama saja yang bolak-balik ---
 
 \newgeometry{
       twoside,
@@ -306,20 +342,15 @@
 }
 % ==========================================
 
-\cleardoublepage % memastikan bab baru dimulai di halaman ganjil (kanan)
+
 \input{6 Daftar Isi.tex}
-\cleardoublepage
+%\input{7 Daftar Lampiran.tex} % Optional. Daftar lampiran sudah ada di dalam daftar isi.
 \input{8 Daftar Gambar.tex}
-\cleardoublepage
 \input{9 Daftar Tabel.tex}
-\cleardoublepage
 \input{10 Daftar Algoritma.tex}
-\cleardoublepage
 \input{11 Daftar Listing.tex}
-\cleardoublepage
 \input{12 Daftar Singkatan.tex}
-\cleardoublepage
-\input{13 Daftar Notasi.tex}
+\input{13 Daftar Simbol.tex}
 
 % ==========================================
 % BAGIAN UTAMA DOKUMEN
@@ -332,29 +363,22 @@
 \renewcommand{\cftchapleader}{\bfseries\cftdotfill{\cftchapdotsep}}
 % ==========================================
 
-\cleardoublepage % memastikan bab baru dimulai di halaman ganjil (kanan)
 \input{Bab I - Pendahuluan.tex}
 
-\cleardoublepage
 \input{Bab II - Studi.tex}
 
-\cleardoublepage
 \input{Bab III - Analisis.tex}
 
-\cleardoublepage
 \input{Bab IV - Perancangan.tex}
 
-\cleardoublepage
 \input{Bab V - Implementasi.tex}
 
-\cleardoublepage
 \input{Bab VI - Evaluasi.tex}
 
-\cleardoublepage
 \input{Bab VII - Penutup.tex}
 
 
-\backmatter
+
 % ==========================================
 % DAFTAR PUSTAKA
 % ==========================================
@@ -365,9 +389,16 @@
 % LAMPIRAN (optional)
 % ==========================================
 \appendix
+
 % Uncomment baris di bawah ini jika ada lampiran
-% \input{Lampiran-A.tex}
-% \input{Lampiran-B.tex}
+\begin{appendices}
+  %\makeatletter 
+  %\renewcommand{\thechapter}{\@Alph\c@chapter} 
+  %\makeatother
+\input{Lampiran-A.tex}
+\input{Lampiran-B.tex}
+\end{appendices}
+\backmatter
 
 \end{document}
  
